@@ -6,7 +6,7 @@ import AddComment from "./add-comment";
 import AddReactions from "./add-reactions";
 import "./view-update.css";
 
-export default class ViewUpdate extends React.Component {
+export default class ViewUpdate extends React.PureComponent {
   static propTypes = {
     update: PropTypes.object.isRequired,
     onAddComment: PropTypes.func.isRequired,
@@ -22,9 +22,12 @@ export default class ViewUpdate extends React.Component {
   };
 
   toogleComments = () => {
-    this.setState({
-      showComments: !this.state.showComments
-    });
+    const { comments } = this.props.update;
+    if (comments.length > 0) {
+      this.setState({
+        showComments: !this.state.showComments
+      });
+    }
   };
 
   toogleAddComments = () => {
@@ -88,7 +91,10 @@ export default class ViewUpdate extends React.Component {
               {this.state.showAddComment ? "Cancel comment" : "New comment"}
             </button>
             <button
-              className="btn btn-secondary view-update-comment-button"
+              className={
+                "btn btn-secondary view-update-comment-button" +
+                (comments.length < 1 ? " disabled" : "")
+              }
               onClick={this.toogleComments}
             >
               {this.state.showComments ? "Hide comments" : "Show comments"}

@@ -7,7 +7,7 @@ import Toolbar from "./toolbar";
 
 const NEW_UPDATES_LENGTH = 3;
 
-export default class JarJarNewsfeed extends React.Component {
+export default class JarJarNewsfeed extends React.PureComponent {
   static propTypes = {
     onAddUpdate: PropTypes.func.isRequired,
     updates: PropTypes.arrayOf(
@@ -52,27 +52,19 @@ export default class JarJarNewsfeed extends React.Component {
     let updatesToRender = this.state.showNewUpdates ? newUpdates : updates;
     return (
       <div>
-        {updatesToRender
-          .sort((a, b) => {
-            if (a.created > b.created) {
-              return -1;
-            } else {
-              return 1;
-            }
-          })
-          .map(update => {
-            return (
-              <ViewUpdate
-                key={update.id}
-                update={update}
-                goodReactions={update.reactions.good}
-                badReactions={update.reactions.bad}
-                onAddComment={onAddComment}
-                handleAddUpdateReaction={handleAddUpdateReaction}
-                handleAddCommentReaction={handleAddCommentReaction}
-              />
-            );
-          })}
+        {updatesToRender.map(update => {
+          return (
+            <ViewUpdate
+              key={update.id}
+              update={update}
+              goodReactions={update.reactions.good}
+              badReactions={update.reactions.bad}
+              onAddComment={onAddComment}
+              handleAddUpdateReaction={handleAddUpdateReaction}
+              handleAddCommentReaction={handleAddCommentReaction}
+            />
+          );
+        })}
       </div>
     );
   }

@@ -62,7 +62,7 @@ export default class AddUpdate extends React.PureComponent {
   render() {
     return (
       <div className="card card-body">
-        <h5 class="card-title">{TITLE}</h5>
+        <h5 className="card-title">{TITLE}</h5>
         <label>{AVATAR_LABEL}</label>
         <div className="row">
           <ImageButton

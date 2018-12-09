@@ -23,7 +23,7 @@ export default class AddReactions extends React.PureComponent {
   };
 
   render() {
-    const { badReactions, goodReactions, handleAddReaction, id } = this.props;
+    const { badReactions, goodReactions } = this.props;
     return (
       <div>
         <button

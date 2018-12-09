@@ -9,22 +9,51 @@ class App extends Component {
   };
 
   componentDidMount() {
+    let sortedUpdates = this.getNewUpdatesArray(data.updates);
+    sortedUpdates.forEach(update => {
+      let sortedComments = this.sortAfterNewest(update.comments);
+      update.comments = sortedComments;
+    });
     this.setState({
-      updates: data.updates
+      updates: sortedUpdates
     });
   }
 
+  sortAfterNewest = array => {
+    array.sort((a, b) => {
+      if (a.created > b.created) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    return array;
+  };
+
+  getNewUpdatesArray = updates => {
+    let newUpdates = [];
+    updates.forEach(update => {
+      let newUpdate = Object.assign({}, update);
+      let newComments = [...update.comments];
+      newUpdate.comments = newComments;
+      newUpdates.push(newUpdate);
+    });
+    let sortedUpdates = this.sortAfterNewest(newUpdates);
+    return sortedUpdates;
+  };
+
   handleAddUpdate = (by, text, imageSrc, created) => {
-    let newUpdate = update(by, text, imageSrc, [], created);
-    let updates = [newUpdate, ...this.state.updates];
+    let newCreatedUpdate = update(by, text, imageSrc, [], created);
+    let updates = this.getNewUpdatesArray(this.state.updates);
+    let newUpdates = [newCreatedUpdate, ...updates];
     this.setState({
-      updates: updates
+      updates: newUpdates
     });
   };
 
   handleAddUpdateReaction = (reaction, updateId) => {
-    let updates = [...this.state.updates];
-    updates.forEach(update => {
+    let newUpdates = this.getNewUpdatesArray(this.state.updates);
+    newUpdates.forEach(update => {
       if (update.id === updateId && reaction === "good") {
         update.reactions.good = update.reactions.good + 1;
       } else if (update.id === updateId && reaction === "bad") {
@@ -32,26 +61,28 @@ class App extends Component {
       }
     });
     this.setState({
-      updates: updates
+      updates: newUpdates
     });
   };
 
   handleAddComment = (updateId, by, text, imageSrc, created) => {
     let newComment = comment(by, text, imageSrc, created);
-    let updates = [...this.state.updates];
-    updates.forEach(update => {
+    let newUpdates = this.getNewUpdatesArray(this.state.updates);
+    newUpdates.forEach(update => {
       if (update.id === updateId) {
         update.comments = [newComment, ...update.comments];
       }
+      let sortedComments = this.sortAfterNewest(update.comments);
+      update.comments = sortedComments;
     });
     this.setState({
-      updates: updates
+      updates: newUpdates
     });
   };
 
   handleAddCommentReaction = (reaction, commentId, updateId) => {
-    let updates = [...this.state.updates];
-    updates.forEach(update => {
+    let newUpdates = this.getNewUpdatesArray(this.state.updates);
+    newUpdates.forEach(update => {
       if (update.id === updateId) {
         update.comments.forEach(comment => {
           if (comment.id === commentId && reaction === "good") {
@@ -63,7 +94,7 @@ class App extends Component {
       }
     });
     this.setState({
-      updates: updates
+      updates: newUpdates
     });
   };
 
@@ -71,7 +102,6 @@ class App extends Component {
     const { updates } = this.state;
     return (
       <div className="container app-container">
-        {/* Display the newsfeed */}
         <JarJarNewsfeed
           title="Jar Jar"
           updates={updates}
