@@ -68,28 +68,28 @@ export default class AddUpdate extends React.PureComponent {
           <ImageButton
             imageSrc={jarjarImage}
             altText="jarjar"
-            onClick={() => this.handleImageClicked(jarjarImage)}
+            onClick={this.handleImageClicked}
             isSelected={this.state.imageSrc === jarjarImage}
           />
 
           <ImageButton
             imageSrc={r2Image}
             altText="r2d2"
-            onClick={() => this.handleImageClicked(r2Image)}
+            onClick={this.handleImageClicked}
             isSelected={this.state.imageSrc === r2Image}
           />
 
           <ImageButton
             imageSrc={c3poImage}
             altText="c3po"
-            onClick={() => this.handleImageClicked(c3poImage)}
+            onClick={this.handleImageClicked}
             isSelected={this.state.imageSrc === c3poImage}
           />
 
           <ImageButton
             imageSrc={b1droidImage}
             altText="b1droid"
-            onClick={() => this.handleImageClicked(b1droidImage)}
+            onClick={this.handleImageClicked}
             isSelected={this.state.imageSrc === b1droidImage}
           />
         </div>

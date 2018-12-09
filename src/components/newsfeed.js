@@ -5,6 +5,8 @@ import AddUpdate from "./add-update";
 import Header from "./header";
 import Toolbar from "./toolbar";
 
+const NEW_UPDATES_LENGTH = 3;
+
 export default class JarJarNewsfeed extends React.Component {
   static propTypes = {
     onAddUpdate: PropTypes.func.isRequired,
@@ -46,8 +48,7 @@ export default class JarJarNewsfeed extends React.Component {
       handleAddUpdateReaction,
       handleAddCommentReaction
     } = this.props;
-    const newUpdatesLength = 3;
-    let newUpdates = [...updates.slice(0, newUpdatesLength)];
+    let newUpdates = [...updates.slice(0, NEW_UPDATES_LENGTH)];
     let updatesToRender = this.state.showNewUpdates ? newUpdates : updates;
     return (
       <div>

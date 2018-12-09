@@ -10,8 +10,13 @@ export default class ImageButton extends React.PureComponent {
     isSelected: PropTypes.bool.isRequired
   };
 
+  handleOnClick = () => {
+    const { onClick, imageSrc } = this.props;
+    onClick(imageSrc);
+  };
+
   render() {
-    const { altText, imageSrc, onClick, isSelected } = this.props;
+    const { altText, imageSrc, isSelected } = this.props;
     return (
       <div className="col-sm image-button-container">
         <button
@@ -21,7 +26,7 @@ export default class ImageButton extends React.PureComponent {
               ? "image-button-button-selected"
               : "image-button-button-not-selected")
           }
-          onClick={onClick}
+          onClick={this.handleOnClick}
         >
           <img src={imageSrc} alt={altText} className="image-button-image" />
         </button>

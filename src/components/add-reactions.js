@@ -12,13 +12,23 @@ export default class AddReactions extends React.PureComponent {
     id: PropTypes.string.isRequired
   };
 
+  handleOnGoodClick = () => {
+    const { handleAddReaction, id } = this.props;
+    handleAddReaction("good", id);
+  };
+
+  handleOnBadClick = () => {
+    const { handleAddReaction, id } = this.props;
+    handleAddReaction("bad", id);
+  };
+
   render() {
     const { badReactions, goodReactions, handleAddReaction, id } = this.props;
     return (
       <div>
         <button
           className="btn btn-outline-success add-reactions-good-button"
-          onClick={() => handleAddReaction("good", id)}
+          onClick={this.handleOnGoodClick}
         >
           <div className="add-reactions-button-content">
             <img
@@ -31,7 +41,7 @@ export default class AddReactions extends React.PureComponent {
         </button>
         <button
           className="btn btn-outline-danger add-reactions-bad-button"
-          onClick={() => handleAddReaction("bad", id)}
+          onClick={this.handleOnBadClick}
         >
           <div className="add-reactions-button-content">
             <img src={dark} alt="bad" className="add-reactions-button-image" />
