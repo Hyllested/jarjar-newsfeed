@@ -34,7 +34,11 @@ class App extends Component {
     let newUpdates = [];
     updates.forEach(update => {
       let newUpdate = Object.assign({}, update);
-      let newComments = [...update.comments];
+      let newComments = [];
+      update.comments.forEach(comment => {
+        let newComment = Object.assign({}, comment);
+        newComments.push(newComment);
+      });
       newUpdate.comments = newComments;
       newUpdates.push(newUpdate);
     });

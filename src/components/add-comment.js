@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
 import jarjarImage from "../jarjar.jpg";
 import r2Image from "../r2d2.jpg";
 import c3poImage from "../3po.jpg";
