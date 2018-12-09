@@ -34,7 +34,7 @@ export default class AddComment extends React.PureComponent {
       this.state.userName,
       this.state.message,
       this.state.imageSrc,
-      moment(Date.now()).valueOf()
+      Date.now()
     );
     this.setState({
       userName: "",
