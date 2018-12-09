@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./toolbar.css";
 
 export default class Toolbar extends React.PureComponent {
   static propTypes = {
@@ -18,12 +19,9 @@ export default class Toolbar extends React.PureComponent {
     } = this.props;
     return (
       <div className="card">
-        <div className="container">
+        <div className="card-body">
           <div className="row">
-            <div
-              className="col-sm"
-              style={{ paddingTop: 10, paddingBottom: 10, textAlign: "start" }}
-            >
+            <div className="col-sm toolbar-show-updates-button">
               <button
                 className="btn btn-secondary"
                 onClick={toogleShowNewUpdates}
@@ -31,10 +29,7 @@ export default class Toolbar extends React.PureComponent {
                 {showNewUpdates ? "Show All updates" : " Show newest updates"}
               </button>
             </div>
-            <div
-              className="col-sm"
-              style={{ paddingTop: 10, paddingBottom: 10, textAlign: "end" }}
-            >
+            <div className="col-sm toolbar-add-update-button">
               <button className="btn btn-primary" onClick={toogleAddUpdate}>
                 {showAddUpdate ? "Cancel new update" : "New update"}
               </button>

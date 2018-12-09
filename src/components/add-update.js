@@ -6,6 +6,7 @@ import c3poImage from "../3po.jpg";
 import b1droidImage from "../b1droid.jpg";
 import ImageButton from "./image-button";
 import moment from "moment";
+import "./add-update.css";
 
 const TITLE = "New update";
 const AVATAR_LABEL = "Avatar";
@@ -60,72 +61,60 @@ export default class AddUpdate extends React.PureComponent {
 
   render() {
     return (
-      <div className="card">
-        <div className={"container"} style={{ paddingTop: 10 }}>
-          <p>
-            <strong>{TITLE}</strong>
-          </p>
-          <div>
-            <label>{AVATAR_LABEL}</label>
-            <div
-              className="row"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <ImageButton
-                imageSrc={jarjarImage}
-                altText="jarjar"
-                onClick={() => this.handleImageClicked(jarjarImage)}
-                isSelected={this.state.imageSrc === jarjarImage}
-              />
+      <div className="card card-body">
+        <h5 class="card-title">{TITLE}</h5>
+        <label>{AVATAR_LABEL}</label>
+        <div className="row">
+          <ImageButton
+            imageSrc={jarjarImage}
+            altText="jarjar"
+            onClick={() => this.handleImageClicked(jarjarImage)}
+            isSelected={this.state.imageSrc === jarjarImage}
+          />
 
-              <ImageButton
-                imageSrc={r2Image}
-                altText="r2d2"
-                onClick={() => this.handleImageClicked(r2Image)}
-                isSelected={this.state.imageSrc === r2Image}
-              />
+          <ImageButton
+            imageSrc={r2Image}
+            altText="r2d2"
+            onClick={() => this.handleImageClicked(r2Image)}
+            isSelected={this.state.imageSrc === r2Image}
+          />
 
-              <ImageButton
-                imageSrc={c3poImage}
-                altText="c3po"
-                onClick={() => this.handleImageClicked(c3poImage)}
-                isSelected={this.state.imageSrc === c3poImage}
-              />
+          <ImageButton
+            imageSrc={c3poImage}
+            altText="c3po"
+            onClick={() => this.handleImageClicked(c3poImage)}
+            isSelected={this.state.imageSrc === c3poImage}
+          />
 
-              <ImageButton
-                imageSrc={b1droidImage}
-                altText="b1droid"
-                onClick={() => this.handleImageClicked(b1droidImage)}
-                isSelected={this.state.imageSrc === b1droidImage}
-              />
-            </div>
-          </div>
-          <br />
-          <div>
-            <label>{USER_LABEL}</label>
-            <input
-              className="form-control"
-              type="text"
-              value={this.state.userName}
-              onChange={this.handleUserNameChange}
-            />
-
-            <label style={{ paddingTop: 10 }}>{MESSAGE_LABEL}</label>
-            <input
-              className="form-control"
-              type="textarea"
-              value={this.state.message}
-              onChange={this.handleMessageChange}
-            />
-            <br />
-            <button
-              className="btn btn-primary"
-              onClick={this.handleSubmitUpdate}
-              style={{ marginBottom: 15 }}
-            >
-              {BUTTON_TITLE}
-            </button>
-          </div>
+          <ImageButton
+            imageSrc={b1droidImage}
+            altText="b1droid"
+            onClick={() => this.handleImageClicked(b1droidImage)}
+            isSelected={this.state.imageSrc === b1droidImage}
+          />
+        </div>
+        <div className="add-update-item">
+          <label>{USER_LABEL}</label>
+          <input
+            className="form-control"
+            type="text"
+            value={this.state.userName}
+            onChange={this.handleUserNameChange}
+          />
+        </div>
+        <div className="add-update-item">
+          <label>{MESSAGE_LABEL}</label>
+          <input
+            className="form-control"
+            type="textarea"
+            value={this.state.message}
+            onChange={this.handleMessageChange}
+          />
+        </div>
+        <div className="add-update-item">
+          <button className="btn btn-primary" onClick={this.handleSubmitUpdate}>
+            {BUTTON_TITLE}
+          </button>
         </div>
       </div>
     );

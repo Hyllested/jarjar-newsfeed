@@ -1,0 +1,25 @@
+.image-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-button-button {
+  border-width: 1px;
+  padding: 5px;
+}
+
+.image-button-button-selected {
+  background-color: #212529;
+  border-color: #212529;
+}
+
+.image-button-button-not-selected {
+  background-color: white;
+  border-color: #ced4da;
+}
+
+.image-button-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}

@@ -1,0 +1,12 @@
+.header-container {
+  background-color: black;
+  border-radius: 4px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-width: 2px;
+  border-color: white;
+  border: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

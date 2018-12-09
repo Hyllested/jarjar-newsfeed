@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ViewComment from "./view-comment";
+import "./comments-list.css";
 
 export default class CommentsList extends React.Component {
   static propTypes = {
@@ -12,7 +13,7 @@ export default class CommentsList extends React.Component {
   render() {
     const { comments, updateId, handleAddCommentReaction } = this.props;
     return (
-      <div className="container" style={{ paddingTop: 5, paddingBottom: 15 }}>
+      <div className="comments-list-container">
         {comments
           .sort((a, b) => {
             if (a.created > b.created) {

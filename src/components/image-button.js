@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./image-button.css";
 
 export default class ImageButton extends React.PureComponent {
   static propTypes = {
@@ -12,25 +13,17 @@ export default class ImageButton extends React.PureComponent {
   render() {
     const { altText, imageSrc, onClick, isSelected } = this.props;
     return (
-      <div
-        className="col-sm"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div className="col-sm image-button-container">
         <button
-          className="btn btn-outline-primary"
-          style={{
-            backgroundColor: isSelected ? "#212529" : "white",
-            borderColor: isSelected ? "#212529" : "#ced4da",
-            borderWidth: 1,
-            padding: 5
-          }}
+          className={
+            "btn btn-outline-primary image-button-button " +
+            (isSelected
+              ? "image-button-button-selected"
+              : "image-button-button-not-selected")
+          }
           onClick={onClick}
         >
-          <img
-            src={imageSrc}
-            alt={altText}
-            style={{ height: 50, width: 50, borderRadius: 4 }}
-          />
+          <img src={imageSrc} alt={altText} className="image-button-image" />
         </button>
       </div>
     );

@@ -70,7 +70,7 @@ class App extends Component {
   render() {
     const { updates } = this.state;
     return (
-      <div className="container" style={{ backgroundColor: "transparent" }}>
+      <div className="container app-container">
         {/* Display the newsfeed */}
         <JarJarNewsfeed
           title="Jar Jar"

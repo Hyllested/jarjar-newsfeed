@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import AddReactions from "./add-reactions";
+import "./view-comment.css";
 
 export default class ViewComment extends React.PureComponent {
   static propTypes = {
@@ -30,42 +31,30 @@ export default class ViewComment extends React.PureComponent {
       id
     } = this.props;
     return (
-      <div className="card" style={{ backgroundColor: "#efebe9" }}>
-        <div className="container" style={{ marginTop: 15 }}>
-          <div className="row" style={{ justifyContent: "space-between" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                paddingLeft: 15
-              }}
-            >
-              <div>
-                <img
-                  src={imageSrc}
-                  alt="avatar"
-                  style={{ width: 30, height: 30, borderRadius: 4 }}
-                />
-              </div>
-              <div style={{ paddingLeft: 10 }}>
-                <p>{`${by}`}</p>
-              </div>
+      <div className="card card-body view-comment-container">
+        <div className="row view-comment-top-container">
+          <div className="view-comment-user-details">
+            <div>
+              <img src={imageSrc} alt="avatar" className="view-comment-image" />
             </div>
-            <div style={{ paddingRight: 15 }}>
-              <AddReactions
-                goodReactions={goodReactions}
-                badReactions={badReactions}
-                handleAddReaction={this.handleAddCommentReaction}
-                id={id}
-              />
+            <div className="view-comment-by-container">
+              <p>{`${by}`}</p>
             </div>
           </div>
-
-          <p>{text}</p>
-          <p className="text-muted">
-            <small>{moment(created).fromNow()}</small>
-          </p>
+          <div className="view-comment-reactions-container">
+            <AddReactions
+              goodReactions={goodReactions}
+              badReactions={badReactions}
+              handleAddReaction={this.handleAddCommentReaction}
+              id={id}
+            />
+          </div>
         </div>
+
+        <p>{text}</p>
+        <p className="text-muted">
+          <small>{moment(created).fromNow()}</small>
+        </p>
       </div>
     );
   }

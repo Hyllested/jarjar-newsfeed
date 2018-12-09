@@ -6,6 +6,7 @@ import r2Image from "../r2d2.jpg";
 import c3poImage from "../3po.jpg";
 import b1droidImage from "../b1droid.jpg";
 import ImageButton from "./image-button";
+import "./add-comment.css";
 
 const AVATAR_LABEL = "Avatar";
 const USER_LABEL = "Username";
@@ -64,8 +65,8 @@ export default class AddComment extends React.PureComponent {
 
   render() {
     return (
-      <div className="card" style={{ margin: 10, backgroundColor: "#efebe9" }}>
-        <div className="container" style={{ paddingTop: 10 }}>
+      <div className="card add-comment-container">
+        <div className="card-body">
           <label>{AVATAR_LABEL}</label>
           <div className="row">
             <ImageButton
@@ -93,16 +94,18 @@ export default class AddComment extends React.PureComponent {
               isSelected={this.state.imageSrc === b1droidImage}
             />
           </div>
-          <br />
+
           <div>
-            <label>{USER_LABEL}</label>
-            <input
-              className="form-control"
-              type="text"
-              value={this.state.userName}
-              onChange={this.handleUserNameChange}
-            />
-            <div style={{ paddingTop: 10 }}>
+            <div className="add-comment-item">
+              <label>{USER_LABEL}</label>
+              <input
+                className="form-control"
+                type="text"
+                value={this.state.userName}
+                onChange={this.handleUserNameChange}
+              />
+            </div>
+            <div className="add-comment-item">
               <label>{COMMENT_LABEL}</label>
               <input
                 className="form-control"
@@ -111,14 +114,14 @@ export default class AddComment extends React.PureComponent {
                 onChange={this.handleMessageChange}
               />
             </div>
-            <br />
-            <button
-              className="btn btn-primary"
-              onClick={this.handleSubmitComment}
-              style={{ marginBottom: 15 }}
-            >
-              {BUTTON_TITLE}
-            </button>
+            <div className="add-comment-item">
+              <button
+                className="btn btn-primary"
+                onClick={this.handleSubmitComment}
+              >
+                {BUTTON_TITLE}
+              </button>
+            </div>
           </div>
         </div>
       </div>

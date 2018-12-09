@@ -1,24 +1,11 @@
 import React from "react";
 import HeaderImage from "../title.png";
+import "./header.css";
 
 export default class Header extends React.PureComponent {
   render() {
     return (
-      <div
-        className="container"
-        style={{
-          backgroundColor: "black",
-          borderRadius: 4,
-          paddingTop: 25,
-          paddingBottom: 25,
-          borderWidth: 2,
-          borderColor: "white",
-          border: "solid",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <div className="container header-container">
         <img src={HeaderImage} className="img-fluid" alt="Jar jar newsfeed" />
       </div>
     );

@@ -1,0 +1,22 @@
+.add-reactions-good-button {
+  height: 38px;
+  margin-right: 10px;
+}
+
+.add-reactions-bad-button {
+  height: 38px;
+}
+
+.add-reactions-button-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-reactions-button-image {
+  height: 20px;
+  width: 20px;
+}
+
+.add-reactions-button-text {
+  padding-left: 10px;
+}

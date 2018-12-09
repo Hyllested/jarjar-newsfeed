@@ -4,6 +4,7 @@ import moment from "moment";
 import CommentsList from "./comments-list";
 import AddComment from "./add-comment";
 import AddReactions from "./add-reactions";
+import "./view-update.css";
 
 export default class ViewUpdate extends React.Component {
   static propTypes = {
@@ -55,56 +56,43 @@ export default class ViewUpdate extends React.Component {
     } = this.props;
     const { by, text, imageSrc, created, comments, id } = update;
     return (
-      <div className="card" style={{ marginTop: 10, paddingTop: 15 }}>
-        <div className="container">
-          <div
-            className="row"
-            style={{ justifyContent: "space-between", paddingRight: 15 }}
-          >
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <div style={{ paddingLeft: 15 }}>
-                <img
-                  src={imageSrc}
-                  alt="avatar"
-                  style={{ width: 30, height: 30, borderRadius: 4 }}
-                />
-              </div>
-              <div style={{ paddingLeft: 10 }}>
-                <p>{`${by}`}</p>
-              </div>
+      <div className="card card-body view-update-container">
+        <div className="row view-update-top-container">
+          <div className="view-update-personal-details">
+            <div className="view-update-image-container">
+              <img src={imageSrc} alt="avatar" className="view-update-image" />
             </div>
-            <AddReactions
-              goodReactions={goodReactions}
-              badReactions={badReactions}
-              handleAddReaction={handleAddUpdateReaction}
-              id={id}
-            />
+            <div className="view-update-by-container">
+              <p>{`${by}`}</p>
+            </div>
           </div>
-          <p style={{ marginBottom: 0, paddingTop: 10 }}>{`${text}`}</p>
-
-          <div className="row" style={{ paddingBottom: 15, paddingTop: 15 }}>
-            <div className="col-sm">
-              <p className="text-muted">
-                <small>{`${moment(created).fromNow()}`}</small>
-              </p>
-            </div>
-            <div className="col-sm">
-              <button
-                className="btn btn-secondary"
-                style={{ float: "right", marginLeft: 10 }}
-                onClick={this.toogleAddComments}
-              >
-                {this.state.showAddComment ? "Cancel comment" : "New comment"}
-              </button>
-
-              <button
-                className="btn btn-secondary"
-                style={{ float: "right" }}
-                onClick={this.toogleComments}
-              >
-                {this.state.showComments ? "Hide comments" : "Show comments"}
-              </button>
-            </div>
+          <AddReactions
+            goodReactions={goodReactions}
+            badReactions={badReactions}
+            handleAddReaction={handleAddUpdateReaction}
+            id={id}
+          />
+        </div>
+        <p className="view-update-text">{`${text}`}</p>
+        <div className="row view-update-bottom-container">
+          <div className="col-sm">
+            <p className="text-muted">
+              <small>{`${moment(created).fromNow()}`}</small>
+            </p>
+          </div>
+          <div className="col-sm">
+            <button
+              className="btn btn-secondary view-update-add-comment-button"
+              onClick={this.toogleAddComments}
+            >
+              {this.state.showAddComment ? "Cancel comment" : "New comment"}
+            </button>
+            <button
+              className="btn btn-secondary view-update-comment-button"
+              onClick={this.toogleComments}
+            >
+              {this.state.showComments ? "Hide comments" : "Show comments"}
+            </button>
           </div>
         </div>
         {this.state.showAddComment ? (
